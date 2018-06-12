@@ -58,3 +58,12 @@ So after running the `fix` target we will get the following ad are good to go wi
          :destroy social-wallet-api.handler/destroy
          :reload-paths ["src"]}
 ```
+
+
+## Known issues and plan
+ - At the time of writing the first time this image is run, all dependencies will be downloaded.  This is not really nice and clean so it shoul be avoided. Most probably
+ docker multistage build might help here.
+
+ - The size of the image is way too large (~760MB) and again this is not good. The plan is to 
+ use docker multistage feature and to build a stnadalone jar file to be run in a tiny image
+ running only an application container and this jar file.
