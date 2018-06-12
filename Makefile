@@ -16,13 +16,7 @@ clean:
 fetch:
 	cd ${SWAPISRC} && git checkout master && git reset --hard && git pull && git checkout master && git checkout ${VERSION}
 
-# comment the line of code ':host "localhost"' in order to allow the service
-# to listen on different names from localhost only
-fix:
-	mv ${SWAPISRC}/project.clj ${SWAPISRC}/project.clj.ORIGINAL
-	cat ${SWAPISRC}/project.clj.ORIGINAL | sed 's/\(:host "localhost"\)/;;\1/' > ${SWAPISRC}/project.clj
-
-docker/build: fetch fix
+docker/build: fetch
 	docker build . -t ${IMAGE}:${VERSION}
 	docker tag ${IMAGE}:${VERSION} ${IMAGE}:latest
 
