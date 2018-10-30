@@ -21,6 +21,10 @@ REPOSITORY                            TAG                 IMAGE ID            CR
 commonfare/social-wallet-api          latest              c179ea2bd09c        8 minutes ago       767MB
 commonfare/social-wallet-api          v0.9.3              c179ea2bd09c        8 minutes ago       767MB
 ```
+### Update SWAPI version
+If you need to update to a new version of the SWAPI service (https://github.com/Commonfare-net/social-wallet-api) please make sure
+to cleanup the source directory first by using the command `make clean` and then to rebuild the docker image you can use `make docker/build`.
+
 ### Push target
 Command `make docker/push` will push the image to Docker Hub and make it publicly available
 
